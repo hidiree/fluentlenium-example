@@ -27,5 +27,4 @@ public class CalculatorBrowserAcceptanceTest extends FluentTest {
         click("#send");
         assertThat(find("#result").getText()).isEqualTo("3");
     }
-
 }
