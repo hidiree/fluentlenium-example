@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+repositories.mavenCentral()
+  
+sourceCompatibility = targetCompatibility = 1.7
+
+def enc = 'UTF-8'
+tasks.withType(AbstractCompile).each { it.options.encoding = enc }
+tasks.withType(GroovyCompile).each { it.groovyOptions.encoding = enc }
+
+archivesBaseName = 'devkan-calc'
+
+httpPort = 8081
+stopPort = 9451
+stopKey = 'foo'
+
+dependencies {
+    providedCompile "javax.ws.rs:javax.ws.rs-api:2.0"
+    testCompile 'junit:junit:4.11'
+    testCompile "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-simple:2.0"
+}
+
+test {
+  exclude '**/*IT*'
+  exclude '**/*$*'
+  exclude '**/*AcceptanceTest*'
+}
+
+task integrationTest(type:Test) {
+  include '**/*IT*'
+  testReportDir = new File(project.testReportDir.parent, 'integration-tests')
+}
+
+task acceptanceTest(type:Test) {
+  include '**/*AcceptanceTest*'
+  doFirst {
+    systemProperties 'host' : host
+    systemProperties 'context' : context
+  }
+}
