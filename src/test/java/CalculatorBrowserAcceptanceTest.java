@@ -25,7 +25,7 @@ public class CalculatorBrowserAcceptanceTest extends FluentTest {
     public void _1plus2_equal_3() throws Exception {
         calcPage.go();
         calcPage.fillAddValue(1, 2).send();
-        assertThat(find("#result").getText()).isEqualTo("3");
+        assertThat(calcPage.result()).isEqualTo(3);
     }
 
     @Test

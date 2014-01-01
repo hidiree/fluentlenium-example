@@ -18,4 +18,8 @@ public class CalculatorPage extends FluentPage {
     public void send() {
         click("#send");
     }
+
+    public int result() {
+        return Integer.valueOf(find("#result").getText());
+    }
 }
