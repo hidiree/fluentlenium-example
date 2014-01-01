@@ -9,16 +9,21 @@ public class CalculatorPage extends FluentPage {
     }
 
     public CalculatorPage fillAddValue(int x1, int x2) {
+        return fillCalcValue(x1, x2).selectExpression(ExpressionSelector.ADD);
+    }
+
+    public CalculatorPage fillSubtractValue(int x1, int x2) {
+        return fillCalcValue(x1, x2).selectExpression(ExpressionSelector.SUBTRACT);
+    }
+
+    public CalculatorPage fillCalcValue(int x1, int x2) {
         fill("#x1").with(String.valueOf(x1));
-        find("#op").find("option[value='add']").click();
         fill("#x2").with(String.valueOf(x2));
         return this;
     }
 
-    public CalculatorPage fillSubtractValue(int x1, int x2) {
-        fill("#x1").with(String.valueOf(x1));
-        find("#op").find("option[value='subtract']").click();
-        fill("#x2").with(String.valueOf(x2));
+    public CalculatorPage selectExpression(ExpressionSelector expression) {
+        find("#op").find("option[value='" + expression.getValue() + "']").click();
         return this;
     }
 
@@ -28,5 +33,15 @@ public class CalculatorPage extends FluentPage {
 
     public int result() {
         return Integer.valueOf(find("#result").getText());
+    }
+
+    private enum ExpressionSelector {
+        ADD("add"), SUBTRACT("subtract");
+
+        private final String value;
+
+        ExpressionSelector(String value) { this.value = value; }
+
+        private String getValue() { return value; }
     }
 }
