@@ -27,4 +27,14 @@ public class CalculatorBrowserAcceptanceTest extends FluentTest {
         click("#send");
         assertThat(find("#result").getText()).isEqualTo("3");
     }
+
+    @Test
+    public void _3minus2_equal_1() throws Exception {
+        goTo("http://localhost:8080/devkan-calc/index.html");
+        fill("#x1").with("3");
+        find("#op").find("option[value='subtract']").click();
+        fill("#x2").with("2");
+        click("#send");
+        assertThat(find("#result").getText()).isEqualTo("1");
+    }
 }
