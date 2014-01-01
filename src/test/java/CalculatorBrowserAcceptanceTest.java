@@ -22,19 +22,30 @@ public class CalculatorBrowserAcceptanceTest extends FluentTest {
     }
 
     @Test
-    public void _1plus2_equal_3() throws Exception {
+    public void _1_plus_2_equal_3() throws Exception {
         calcPage.go();
         calcPage.fillAddValue(1, 2).send();
         assertThat(calcPage.result()).isEqualTo(3);
     }
 
     @Test
-    public void _3minus2_equal_1() throws Exception {
-        goTo("http://localhost:8080/devkan-calc/index.html");
-        fill("#x1").with("3");
-        find("#op").find("option[value='subtract']").click();
-        fill("#x2").with("2");
-        click("#send");
-        assertThat(find("#result").getText()).isEqualTo("1");
+    public void _10_plus_20_equal_30() throws Exception {
+        calcPage.go();
+        calcPage.fillAddValue(10, 20).send();
+        assertThat(calcPage.result()).isEqualTo(30);
+    }
+
+    @Test
+    public void _3_minus_2_equal_1() throws Exception {
+        calcPage.go();
+        calcPage.fillSubtractValue(3, 2).send();
+        assertThat(calcPage.result()).isEqualTo(1);
+    }
+
+    @Test
+    public void _30_minus_20_equal_1() throws Exception {
+        calcPage.go();
+        calcPage.fillSubtractValue(30, 20).send();
+        assertThat(calcPage.result()).isEqualTo(10);
     }
 }

@@ -9,9 +9,16 @@ public class CalculatorPage extends FluentPage {
     }
 
     public CalculatorPage fillAddValue(int x1, int x2) {
-        fill("#x1").with("1");
+        fill("#x1").with(String.valueOf(x1));
         find("#op").find("option[value='add']").click();
-        fill("#x2").with("2");
+        fill("#x2").with(String.valueOf(x2));
+        return this;
+    }
+
+    public CalculatorPage fillSubtractValue(int x1, int x2) {
+        fill("#x1").with(String.valueOf(x1));
+        find("#op").find("option[value='subtract']").click();
+        fill("#x2").with(String.valueOf(x2));
         return this;
     }
 
