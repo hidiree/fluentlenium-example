@@ -22,6 +22,7 @@ dependencies {
     testCompile 'junit:junit:4.11'
     testCompile "org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-simple:2.0"
     testCompile "org.fluentlenium:fluentlenium-festassert:0.9.1"
+    testCompile "org.glassfish.main.extras:glassfish-embedded-all:4.0"
 }
 
 test {

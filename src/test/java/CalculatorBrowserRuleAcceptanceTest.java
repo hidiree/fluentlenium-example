@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -8,6 +9,9 @@ public class CalculatorBrowserRuleAcceptanceTest {
 
     @Rule
     public FluentLeniumDriver driver = new FluentLeniumDriver(FluentLeniumDriver.Driver.CHROME);
+
+    @ClassRule
+    public static GlassFishTamer tamer = new GlassFishTamer("devkan-calc", 8080);
 
     private CalculatorPage calcPage;
 
