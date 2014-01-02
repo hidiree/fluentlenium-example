@@ -1,29 +1,19 @@
-import org.fluentlenium.adapter.FluentTest;
-import org.fluentlenium.core.annotation.Page;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-public class CalculatorBrowserAcceptanceTest extends FluentTest {
+public class CalculatorBrowserRuleAcceptanceTest {
 
-    @Page
+    @Rule
+    public FluentLeniumDriver driver = new FluentLeniumDriver(FluentLeniumDriver.Driver.CHROME);
+
     private CalculatorPage calcPage;
-
-    @Override
-    public WebDriver getDefaultDriver() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
-        return driver;
-    }
 
     @Before
     public void setUp() throws Exception {
+        calcPage = driver.createPage(CalculatorPage.class);
         calcPage.go();
     }
 
