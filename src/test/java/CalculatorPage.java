@@ -1,5 +1,7 @@
 import org.fluentlenium.core.FluentPage;
-import services.Calculator;
+
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 public class CalculatorPage extends FluentPage {
 
@@ -32,6 +34,9 @@ public class CalculatorPage extends FluentPage {
     }
 
     public int result() {
+        // 空文字じゃなくなるまで5秒待つ
+        await().atMost(5, TimeUnit.SECONDS).until("#result")
+                .withText().contains(Pattern.compile(".+")).isPresent();
         return Integer.valueOf(find("#result").getText());
     }
 
