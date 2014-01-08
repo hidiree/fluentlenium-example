@@ -32,10 +32,9 @@ public class ListOperationTest extends FluentTest {
         listPage.go();
     }
 
-    @Ignore
     @Test
     public void _3行目のチェックボックスをチェック() throws Exception {
-        listPage.check(1);
+        listPage.check(3);
         assertThat(findFirst("#checkbox3").isSelected()).isEqualTo(true);
     }
 
