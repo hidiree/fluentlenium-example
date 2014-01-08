@@ -32,6 +32,10 @@ public class ListOperationPage extends FluentPage{
         public ListRow row(int no) {
             return new ListRow(element.findFirst("tbody tr:nth-child(" + no + ")"));
         }
+
+        public int size() {
+            return element.find("tbody").find("tr").size();
+        }
     }
 
     public class ListRow {

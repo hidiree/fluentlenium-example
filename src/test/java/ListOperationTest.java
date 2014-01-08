@@ -35,7 +35,7 @@ public class ListOperationTest extends FluentTest {
     @Test
     public void _3行目のチェックボックスをチェック() throws Exception {
         listPage.check(3);
-        assertThat(findFirst("#checkbox3").isSelected()).isEqualTo(true);
+        assertThat(findFirst("#tid\\.3\\.checkbox").isSelected()).isEqualTo(true);
     }
 
     @Test
@@ -49,6 +49,10 @@ public class ListOperationTest extends FluentTest {
     @Test
     public void 指定のIDを持つ要素が無いことを検証() throws Exception {
         assertThat(find("#xxx").isEmpty()).isEqualTo(true);
+    }
 
+    @Test
+    public void リストのサイズを検証() throws Exception {
+        assertThat(listPage.list().size()).isEqualTo(3);
     }
 }
