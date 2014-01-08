@@ -2,9 +2,6 @@ import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.domain.FluentList;
 import org.fluentlenium.core.domain.FluentWebElement;
 
-/**
- * Created by hijiri on 2014/01/07.
- */
 public class ListOperationPage extends FluentPage{
 
     @Override
@@ -33,7 +30,7 @@ public class ListOperationPage extends FluentPage{
         }
 
         public ListRow row(int no) {
-            return new ListRow(element.findFirst("tbody tr:nth-child(" + no + "')"));
+            return new ListRow(element.findFirst("tbody tr:nth-child(" + no + ")"));
         }
     }
 
@@ -46,7 +43,8 @@ public class ListOperationPage extends FluentPage{
         }
 
         public void check() {
-            element.find("input").click();
+            element.findFirst("*[id $= 'checkbox']").click();
         }
+
     }
 }
