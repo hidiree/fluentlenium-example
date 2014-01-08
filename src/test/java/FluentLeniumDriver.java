@@ -33,8 +33,6 @@ public class FluentLeniumDriver extends TestWatcher {
     @Override
     public Statement apply(Statement base, Description description) {
         Statement statement = base;
-        statement = runner.name.apply(statement, description);
-        statement = runner.watchman.apply(statement, description);
         for (Field field : runner.getClass().getDeclaredFields()) {
             if (field.isAnnotationPresent(Rule.class)) {
                 try {
