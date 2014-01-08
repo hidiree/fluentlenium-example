@@ -1,3 +1,5 @@
+package page;
+
 import org.fluentlenium.core.FluentPage;
 
 import java.util.concurrent.TimeUnit;

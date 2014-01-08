@@ -1,3 +1,5 @@
+package util;
+
 import org.fluentlenium.adapter.FluentTest;
 import org.fluentlenium.core.FluentPage;
 import org.junit.Rule;

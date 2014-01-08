@@ -1,3 +1,5 @@
+package page;
+
 import org.fluentlenium.core.FluentPage;
 import org.fluentlenium.core.domain.FluentList;
 import org.fluentlenium.core.domain.FluentWebElement;
